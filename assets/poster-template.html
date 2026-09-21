@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 占位：论文短标题 -->
+<title>论文短标题 · 学术海报</title>
+<style>
+  /* ===== 学术海报模板：微信公众号科研推文风格 =====
+     - 纵向长页面，手机优先，桌面居中限宽
+     - 浅色背景深色正文，单一主强调色（改 --accent 即可全局换色）
+     - 全部内联 CSS，系统字体，无外部依赖，离线可打开 */
+  :root {
+    --accent: #1a6feb;        /* 主强调色（可按领域微调，保持全局唯一） */
+    --accent-light: #e8f1fe;  /* 强调色浅底 */
+    --bg: #ffffff;            /* 页面背景 */
+    --bg-soft: #f7f8fa;       /* 模块浅底 */
+    --text: #2b2f33;          /* 正文 */
+    --text-sub: #6b7280;      /* 次要文字 */
+    --border: #e5e7eb;
+    --radius: 12px;
+    --maxw: 720px;            /* 桌面内容限宽 */
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    line-height: 1.75;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 48px; }
+
+  /* ---- 标题区 ---- */
+  header { padding: 40px 0 24px; border-bottom: 3px solid var(--accent); margin-bottom: 8px; }
+  .kicker { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: 2px; margin-bottom: 10px; }
+  h1 { font-size: 26px; line-height: 1.4; font-weight: 700; margin-bottom: 12px; }
+  .meta { color: var(--text-sub); font-size: 14px; }
+  .meta span { display: inline-block; margin-right: 14px; }
+
+  /* ---- 模块 ---- */
+  section { padding: 28px 0 6px; }
+  .sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .sec-num {
+    background: var(--accent); color: #fff; border-radius: 8px;
+    min-width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; flex-shrink: 0;
+  }
+  .sec-title { font-size: 20px; font-weight: 700; }
+  h2.sec-title { font-size: 20px; }
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ---- 引用块：核心问题 / Take-home ---- */
+  blockquote {
+    background: var(--accent-light); border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 16px 18px; margin: 0 0 14px; font-size: 16.5px;
+  }
+  blockquote strong { color: var(--accent); }
+
+  /* ---- 工作亮点列表 ---- */
+  .highlights { list-style: none; }
+  .highlights li {
+    position: relative; padding: 10px 0 10px 30px; border-bottom: 1px dashed var(--border);
+  }
+  .highlights li:last-child { border-bottom: none; }
+  .highlights li::before {
+    content: ""; position: absolute; left: 4px; top: 19px;
+    width: 9px; height: 9px; border-radius: 50%; background: var(--accent);
+  }
+
+  /* ---- 图片与图注 ---- */
+  figure { margin: 18px 0; }
+  figure img { width: 100%; display: block; border: 1px solid var(--border); border-radius: var(--radius); background: #fff; }
+  figcaption { font-size: 13px; color: var(--text-sub); text-align: center; margin-top: 8px; }
+
+  /* ---- 图表五要素解析卡 ---- */
+  .fig-card {
+    background: var(--bg-soft); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px 18px; margin: 14px 0;
+  }
+  .fig-card .fig-q { font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+  .fig-card dl { display: grid; grid-template-columns: 84px 1fr; gap: 6px 12px; font-size: 14.5px; }
+  .fig-card dt { color: var(--text-sub); font-weight: 600; white-space: nowrap; }
+  .fig-card dd { margin: 0; }
+  .fig-takeaway {
+    margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border);
+    font-weight: 600; color: var(--accent); font-size: 14.5px;
+  }
+  /* 图内简单标注（文字引导），不改变数据含义 */
+  .fig-note { display: inline-block; background: var(--accent-light); color: var(--accent);
+    border-radius: 6px; padding: 1px 8px; font-size: 13px; font-weight: 600; margin-right: 6px; }
+
+  /* ---- 文献信息 ---- */
+  .citation {
+    background: var(--bg-soft); border-radius: var(--radius); padding: 16px 18px;
+    font-size: 13.5px; color: var(--text-sub); line-height: 1.7;
+  }
+  footer { padding-top: 24px; }
+  .footer-note { text-align: center; font-size: 12px; color: var(--text-sub);
+    border-top: 1px solid var(--border); padding-top: 16px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ① 标题区 -->
+  <header>
+    <div class="kicker">学术海报 · PAPER POSTER</div>
+    <!-- 占位：论文完整标题 -->
+    <h1>论文完整标题（来自 PDF 原文，不得改写）</h1>
+    <div class="meta">
+      <span>作者列表</span>
+      <span>期刊 / 会议名</span>
+      <span>年份</span>
+    </div>
+  </header>
+
+  <!-- ② 研究背景：为什么研究这个问题（2-4 句） -->
+  <section>
+    <div class="sec-head"><div class="sec-num">01</div><h2 class="sec-title">研究背景</h2></div>
+    <p>为什么这个问题重要……</p>
+  </section>
+
+  <!-- ③ 核心问题：论文具体解决什么问题（1-3 句，引用块突出） -->
+  <section>
+    <div class="sec-head"><div class="sec-num">02</div><h2 class="sec-title">核心问题</h2></div>
+    <blockquote>本文要解决的核心问题是……</blockquote>
+  </section>
+
+  <!-- ④ 工作亮点：3-5 条最重要贡献 -->
+  <section>
+    <div class="sec-head"><div class="sec-num">03</div><h2 class="sec-title">工作亮点</h2></div>
+    <ul class="highlights">
+      <li>贡献一（每条一句话）</li>
+      <li>贡献二</li>
+      <li>贡献三</li>
+    </ul>
+  </section>
+
+  <!-- ⑤ 方法 / 研究框架：配方法图（如有），复杂流程分步讲解 -->
+  <section>
+    <div class="sec-head"><div class="sec-num">04</div><h2 class="sec-title">方法 / 研究框架</h2></div>
+    <p>实验流程 / 模型结构 / 材料设计……</p>
+    <!-- 将 base64 <img> 片段放入 figure，figcaption 写 "论文 Figure 1（裁剪自原文）" -->
+    <figure>
+      <img src="data:image/png;base64,..." alt="方法图">
+      <figcaption>Figure 1 · 裁剪自论文原文</figcaption>
+    </figure>
+  </section>
+
+  <!-- ⑥ 核心结果：3-6 组 Figure/Table 图文解析，图文交替 -->
+  <section>
+    <div class="sec-head"><div class="sec-num">05</div><h2 class="sec-title">核心结果</h2></div>
+
+    <!-- 每组核心图复制一份以下结构：figure（原始 Figure）+ fig-card（五要素解析） -->
+    <figure>
+      <img src="data:image/png;base64,..." alt="结果图">
+      <figcaption>Figure 2 · 裁剪自论文原文</figcaption>
+    </figure>
+    <div class="fig-card">
+      <div class="fig-q">这张图研究什么：……</div>
+      <dl>
+        <dt><span class="fig-note">看哪里</span></dt><dd>应该重点看哪里（文字引导，如"关注红色曲线在 48h 处的突跃"）</dd>
+        <dt>主要结果</dt><dd>结果是什么（数据来自原文）</dd>
+        <dt>意味着什么</dt><dd>结果的科学含义</dd>
+      </dl>
+      <div class="fig-takeaway">一句话 Takeaway：……</div>
+    </div>
+  </section>
+
+  <!-- ⑦ 机制 / 深入分析：仅在论文确实存在时保留本节，否则整体删除 -->
+  <section>
+    <div class="sec-head"><div class="sec-num">06</div><h2 class="sec-title">机制 / 深入分析</h2></div>
+    <p>……</p>
+  </section>
+
+  <!-- ⑧ 总结与科研意义（2-4 句） -->
+  <section>
+    <div class="sec-head"><div class="sec-num">07</div><h2 class="sec-title">总结与意义</h2></div>
+    <p>……</p>
+  </section>
+
+  <!-- ⑨ Take-home Message（1-2 句，引用块突出） -->
+  <section>
+    <blockquote><strong>Take-home Message：</strong>……</blockquote>
+  </section>
+
+  <!-- ⑩ 文献信息：完整引用，只写 PDF 中实际存在的信息，缺失标"未标注" -->
+  <footer>
+    <div class="citation">
+      <strong>论文引用</strong><br>
+      作者. 标题. 期刊/会议, 卷(期): 页码, 年份. DOI: ……
+    </div>
+    <p class="footer-note">本海报由论文 PDF 自动生成 · 图表均裁剪自论文原文 · 内容忠于原论文</p>
+  </footer>
+
+</div>
+</body>
+</html>
